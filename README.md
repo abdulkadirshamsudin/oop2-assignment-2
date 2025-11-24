@@ -1,78 +1,132 @@
-# Python Basics
+## Python Loops
 
-This section introduces fundamental Python concepts including printing output, variables, data types, and multiple assignment. Each concept includes a short explanation and a clear example.
+Loops allow your program to **repeat code multiple times**.  
+Python provides `for` loops and `while` loops, which are used depending on the situation.
 
 ---
 
-# Printing Messages
+### 1. `for` Loops
 
-Python uses the `print()` function to display text or values on the screen.
+- Used to iterate over a **sequence** (list, tuple, string, range, etc.).  
+- Executes a block of code for each item in the sequence.
 
-### Example:
 ```python
-print("What you want to print")
-print("Hello World")
-Variables
-Variables are containers that store data values. Common data types include:
+# Example 1: Iterate over a list
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+# Output:
+# apple
+# banana
+# cherry
 
-String (text)
+# Example 2: Using range() to iterate over numbers
+for i in range(5):
+    print(i)
+# Output:
+# 0
+# 1
+# 2
+# 3
+# 4
 
-Integer (whole numbers)
+# Example 3: Sum numbers using a for loop
+total = 0
+for i in range(1, 6):  # 1 to 5
+    total += i
+print("Sum:", total)
+# Output:
+# Sum: 15
+```
 
-Float (decimal numbers)
+**Key Points for `for` loops:**
+- `range(start, stop, step)` generates numbers: `start` inclusive, `stop` exclusive.  
+- Loops can iterate over **any iterable**: strings, lists, tuples, sets, dictionaries (keys or values).  
+- Use `break` to exit the loop early and `continue` to skip the current iteration.
 
-Boolean (True or False)
+---
 
-1. Strings
-Strings store text data. They are written inside quotes.
+### 2. `while` Loops
 
-Example:
-python
-Copy code
-first_name = "bro"
-last_name = "shariff"
-full_name = first_name + " " + last_name
-print(full_name)
-2. Integers
-Integers store whole numbers. You can modify them using arithmetic operations.
+- Repeats a block of code **as long as a condition is True**.  
+- Useful when the number of iterations is **not known in advance**.
 
-Example:
-python
-Copy code
-age = 21
-age += 1
-print("My age is " + str(age))  # type casting with str()
-Note: You must convert numbers to strings when joining them with text (type casting).
+```python
+# Example 1: Simple while loop
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+# Output:
+# 0
+# 1
+# 2
+# 3
+# 4
 
-3. Floats
-Floats represent numbers with decimals.
+# Example 2: Using break
+count = 0
+while True:
+    print(count)
+    count += 1
+    if count == 3:
+        break
+# Output:
+# 0
+# 1
+# 2
 
-Example:
-python
-Copy code
-height = 178.5
-print("My height is " + str(height))
-4. Booleans
-Booleans represent True or False values.
+# Example 3: Using continue
+count = 0
+while count < 5:
+    count += 1
+    if count == 3:
+        continue  # Skip printing when count is 3
+    print(count)
+# Output:
+# 1
+# 2
+# 4
+# 5
+```
 
-Example:
-python
-Copy code
-human = False
-print(human)
-Multiple Assignment
-Python allows assigning values to multiple variables in a single line.
+**Key Points for `while` loops:**
+- Make sure the **condition will eventually become False**, otherwise the loop will run forever.  
+- `break` exits the loop immediately.  
+- `continue` skips the rest of the current iteration and moves to the next check.  
 
-Example 1:
-python
-Copy code
-name, age, attractive = "shariff", 21, True
-Example 2:
-You can assign one value to several variables at once:
+---
 
-python
-Copy code
-spongebob = patrick = gary = 30
-This sets all three variables to the value 30.
+### 3. Nested Loops
 
-Copy code
+- Loops inside loops are called **nested loops**.  
+- Useful for **2D structures** like grids, matrices, or tables.
+
+```python
+# Example: Nested for loop
+for i in range(1, 4):  # Outer loop
+    for j in range(1, 4):  # Inner loop
+        print(f"i={i}, j={j}")
+# Output:
+# i=1, j=1
+# i=1, j=2
+# i=1, j=3
+# i=2, j=1
+# i=2, j=2
+# i=2, j=3
+# i=3, j=1
+# i=3, j=2
+# i=3, j=3
+```
+
+**Tips:**
+- Nested loops can be `for` inside `for`, `while` inside `while`, or mixed.  
+- Be careful: nested loops can **increase execution time** quickly.  
+
+---
+
+✅ **Summary:**
+- **`for` loop** → best for iterating over sequences with a known length.  
+- **`while` loop** → best for repeating until a condition is met.  
+- Use **`break`** and **`continue`** to control loop execution.  
+- **Nested loops** allow multi-level iteration for more complex logic.
